@@ -1,0 +1,45 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        
+        int T = sc.nextInt();
+        
+        while (T-- > 0) {
+            int N = sc.nextInt();
+            String s = sc.next();
+            
+            int consecutiveConsonants = 0;
+            boolean isHard = false;
+            
+            for (int i = 0; i < N; i++) {
+                char ch = s.charAt(i);
+                
+                // Check if current character is a vowel
+                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                    consecutiveConsonants = 0; // Reset streak on finding a vowel
+                } else {
+                    consecutiveConsonants++;   // Increment streak for a consonant
+                    if (consecutiveConsonants >= 4) {
+                        isHard = true;
+                        break;
+                    }
+                }
+            }
+            
+            // Print "YES" if it is easy to pronounce, else "NO"
+            if (isHard) {
+                System.out.println("NO");
+            } else {
+                System.out.println("YES");
+            }
+        }
+        sc.close();
+    }
+}
